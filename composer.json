@@ -1,0 +1,8 @@
+{
+    "require": {
+        "twig/twig": "^3.7",
+        "monolog/monolog": "^3.4",
+      "ext-pdo": "*",
+      "ext-curl": "*"
+    }
+}

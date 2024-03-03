@@ -1,0 +1,110 @@
+<div class="default_page">
+
+    <div class="promo">
+        {% for item in promo %}
+            <div class="promo_slide">
+                <div class="img_wrap">
+                    <img src="/uploads/{{ item.img_path }}" alt="">
+                </div>
+
+                <div class="promo_overlay"></div>
+
+                <div class="promo_content">
+                    <div class="info_block">
+                        <div class="title">{{ item.title }}</div>
+                        <a class="read_more-link" href="/post/read/{{ item.id }}">Читать подробнее...</a>
+                    </div>
+                    <div class="header_title">warszaw<span style="color: #984e4e">INFO.pl</span></div>
+
+                    <a class="link_go-to-main" href="#block1">Перейти к новостям</a>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="container">
+
+        <div class="top_title-wrap">
+            <div class="top_title">Топ новостей</div>
+        </div>
+
+        <div class="top_posts">
+            {% for item in top %}
+                <div class="post" data-id="{{ post.id }}">
+
+                    <div class="img_wrap">
+                        <img src="/uploads/{{ item.img_path }}" alt="">
+                    </div>
+
+                    <div class="title">{{ item.title }}</div>
+
+                    <div class="details">
+                        <a class="read_more-link" href="/post/read/{{ item.id }}">Читать подробнее...</a>
+
+                        <div class="description">
+                            {{ item.description }}
+                        </div>
+                    </div>
+
+                    <div class="publish_date">
+                        Дата публикации: {{ item.publish_date }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <a id="block1" class="top_end-line"></a>
+
+        <div class="categories_wrap">
+            <button class='category' id="all_product-btn">Все</button>
+            {% for item in categories %}
+                <button class="category" data-category="{{ item.category_en }}">{{ item.category_ru }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="main_posts-title">
+            <div class="posts_title">Основные</div>
+        </div>
+
+
+        <div class="posts_container" id="post-container">
+
+            {% for post in posts %}
+                <div class="post" data-id="{{ post.id }}">
+
+                    <h1>{{ post.category_ru }}</h1>
+                    <div class="img_wrap">
+                        <img src="/uploads/{{ post.img_path }}" alt="">
+                    </div>
+
+                    <div class="title">{{ post.title }}</div>
+
+                    <div class="details">
+                        <a class="read_more-link" href="/post/read/{{ post.id }}">Читать подробнее...</a>
+
+                        <div class="description">
+                            {{ post.description }}
+                        </div>
+                    </div>
+
+                    <div class="publish_date">
+                        Дата публикации: {{ post.publish_date }}
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+
+
+    <div class="btn_wrap">
+        <button id="btn-show_more" class="btn btn-success">Показать еще...</button>
+    </div>
+
+</div>
+

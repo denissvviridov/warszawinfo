@@ -1,0 +1,33 @@
+<div class="default_page">
+    <div class="container">
+
+
+        <div class="details_block">
+            <a class="read_more-link" href="/">Вернутся на главную</a>
+            <h1 class="category_name">{{ category.category_ru }}</h1>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="posts_list">
+            {% for item in posts %}
+                <div class="post">
+
+                    <div class="category-img_wrap">
+                        <img src="/uploads/{{ item.img_path }}" alt="">
+                    </div>
+
+                    <div class="info_block">
+                        <div class="category_title">{{ item.title }}</div>
+                        <div class="description">{{ item.description }}</div>
+                        <a class="read_more-link" href="/post/read/{{ item.id }}">Читать подробнее...</a>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+        {{ btn|raw }}
+    </div>
+</div>

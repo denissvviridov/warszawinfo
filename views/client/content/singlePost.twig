@@ -1,0 +1,105 @@
+<div class="default_page">
+
+
+    <div class="container_single-post">
+
+
+        <div class="single_post" data-id="{{ post.id }}">
+
+            <div class="line"></div>
+
+            <div class="details_wrap">
+                <a class="read_more-link" href="/">Вернутся на главную</a>
+                <div class="category">{{ post.category_ru }}</div>
+                <div class="publish_dte"><span>Дата публикации:</span> {{ post.publish_date }}</div>
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="img_wrap">
+                <img src="/uploads/{{ post.img_path }}" alt="">
+            </div>
+
+            <div class="title">{{ post.title }}</div>
+
+            <div class="post_description">
+                {{ post.description }}
+            </div>
+
+            <div class="settings_block">
+                <div class="first_wrap">
+                    <div>
+                        Tелеграм:<a href="https://t.me/notbestnews2"> <i class="fa-brands fa-telegram"></i> </a>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid like fa-thumbs-up"></i> <span class="liked_post"
+                                                                         style="font-size: 14px;color: rgba(0,0,0,0.5)">
+                            Пост понравился: {{ post.likes }} пользователям
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="comment_list">
+                    {%for item in comments %}
+                        <div class="comment">
+                            <div class="avatar">
+                                <img src="/uploads/avatar.jpeg" alt="">
+                            </div>
+                            <div class="text">{{ item.comment }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button data-post="{{ post.id }}" class="btn_more-comments">Показать больше коментариев</button>
+
+
+
+                <form method="post" class="comment_wrap">
+
+                    <label for="comment">Тут можете оставить коментарий</label>
+                    <textarea name="comment" id="comment" cols="30" rows="10"
+                              placeholder="Напишите коментарий..."></textarea>
+
+                    <button type="submit" data-post="{{ post.id }}" class="btn create_comment">Оставить коментарий
+                    </button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="h3">Смотрите по категориям...</div>
+
+        <div class="single-categories_wrap">
+            {% for item in categories %}
+                <a href="/posts/category/{{ item.category_en }}" class="single_category">{{ item.category_ru }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="single_line_title">Так же может быть интерестно...</div>
+
+        <div class="single_posts-wrap">
+            {% for item in list %}
+                <a href="/post/read/{{ item.id }}" class="post">
+                  <span class="img_wrap">
+                      <img src="/uploads/{{ item.img_path }}" alt="">
+                  </span>
+
+                    <h3 class="single_title"><b>{{ item.title }}</b></h3>
+
+                    <div class="single_description">{{ item.description }}</div>
+                    <div class="single_publish">Опубликовано: {{ item.publish_date }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="default_page">
+    <div class="container">
+        <h1>Добавить пост</h1>
+
+
+        <form method="post" enctype="multipart/form-data" >
+
+            <label for="title">Введите заголовок поста:</label>
+            <input class="form-control" type="text" name="post_title" id="title">
+
+            <label for="photo">Загрузите фото новости:</label>
+            <input class="form-control" type="file" name="image" id="photo" required>
+
+            <label for="top">Отметить новость как топовую</label>
+            <input  type="checkbox" name="top" id="top">
+            <br>
+
+            <label for="category">Выберите категорию</label>
+
+            <select class="form-control" name="select_category" id="category">
+                {%for item in categories %}
+                    <option value="{{ item.category_en }}">{{ item.category_ru }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="description">Введите основной текст поста:</label>
+            <textarea class="form-control" name="post_description" id="description" cols="30" rows="10"></textarea>
+
+            <button class="btn btn-success" type="submit" name="create_post">Создать новость</button>
+        </form>
+
+
+
+        {% for item in posts %}
+            <h1>{{ item.title }}</h1>
+
+            <div class="img_wrap" style="width: 300px;height: 200px">
+                <img style="width: 100%;height: auto" src="/uploads/{{ item.img_path }}" alt="">
+            </div>
+        {% endfor %}
+
+
+
+    </div>
+</div>

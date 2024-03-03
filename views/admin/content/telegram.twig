@@ -1,0 +1,50 @@
+<div class="default_page">
+    <div class="container">
+        <h1>Добавить новость в телеграм</h1>
+
+        <div class="telegram_wrap">
+
+            <form method="post" enctype="multipart/form-data">
+
+                <label for="title">Заголовок поста</label>
+                <input class="form-control" type="text" name="title" id="title" >
+
+                <label for="file">Загрузить фотку поста</label>
+                <input class="form-control" type="file" name="image" id="file">
+
+                <label for="main_text">Основной текст</label>
+                <textarea class="form-control"  name="content" id="main_text"></textarea>
+
+                <label for="link">Загрузить ccылку  поста</label>
+                <input class="form-control" type="text" name="link" id="link">
+
+                <button  class="btn btn-success" type="submit" name="add_on_telegram">Добавить</button>
+            </form>
+
+            <div class="block_info">
+                <div class="post">
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="posts_lists">
+            {%for item in posts %}
+                <div class="post">
+                    <div class="id">{{ item.id }}</div>
+                    <div class="title">{{ item.title }}</div>
+                    <div class="description">{{ item.description }}</div>
+                    <div class="link">Ссылка <input type="text" value="http://warszawinfo.pl/post/read/{{ item.id }}"> {{ item.id }}</div>
+                    <div class="img_wrap">
+                        <img src="/uploads/{{ item.img_path }}" alt="">
+                    </div>
+                </div>
+            {%endfor %}
+        </div>
+
+
+    </div>
+</div>
